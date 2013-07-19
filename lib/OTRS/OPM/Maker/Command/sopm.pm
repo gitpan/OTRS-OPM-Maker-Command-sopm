@@ -15,7 +15,7 @@ use XML::LibXML::PrettyPrint;
 
 use OTRS::OPM::Maker -command;
 
-our $VERSION = 1.01;
+our $VERSION = 1.02;
 
 sub abstract {
     return "build sopm file based on metadata";
@@ -107,7 +107,7 @@ sub execute {
 
         # remove "hidden" files from list;
         @files = grep{ 
-            ( substr( $_, 0, 1 ) eq '.' ) &&
+            ( substr( $_, 0, 1 ) ne '.' ) &&
             $_ !~ m{[\\/]\.} 
         }sort @files;
 
@@ -299,7 +299,7 @@ OTRS::OPM::Maker::Command::sopm - Build .sopm file based on metadata
 
 =head1 VERSION
 
-version 1.01
+version 1.02
 
 =head1 CONFIGURATION
 
