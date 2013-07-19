@@ -20,7 +20,6 @@ my %WriteMakefileArgs = (
   "LICENSE" => "artistic_2",
   "NAME" => "OTRS::OPM::Maker::Command::sopm",
   "PREREQ_PM" => {
-    "Config::Ini" => 0,
     "File::Basename" => 0,
     "File::Find::Rule" => 0,
     "File::Spec" => 0,
@@ -31,7 +30,7 @@ my %WriteMakefileArgs = (
     "XML::LibXML::PrettyPrint" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.01",
+  "VERSION" => "0.02",
   "test" => {
     "TESTS" => ""
   }

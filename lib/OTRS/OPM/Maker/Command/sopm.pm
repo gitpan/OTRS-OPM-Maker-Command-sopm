@@ -15,7 +15,7 @@ use XML::LibXML::PrettyPrint;
 
 use OTRS::OPM::Maker -command;
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 sub abstract {
     return "build sopm file based on metadata";
@@ -298,7 +298,7 @@ OTRS::OPM::Maker::Command::sopm - Build .sopm file based on metadata
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 CONFIGURATION
 
