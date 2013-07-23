@@ -23,7 +23,6 @@ my %WriteMakefileArgs = (
     "File::Basename" => 0,
     "File::Find::Rule" => 0,
     "File::Spec" => 0,
-    "IO::File" => 0,
     "JSON" => "2.27",
     "OTRS::OPM::Maker" => 0,
     "Path::Class" => 0,
@@ -31,7 +30,7 @@ my %WriteMakefileArgs = (
     "XML::LibXML::PrettyPrint" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "1.03",
+  "VERSION" => "1.02",
   "test" => {
     "TESTS" => ""
   }

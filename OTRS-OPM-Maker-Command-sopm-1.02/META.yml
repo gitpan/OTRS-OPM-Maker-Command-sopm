@@ -16,10 +16,9 @@ requires:
   File::Basename: 0
   File::Find::Rule: 0
   File::Spec: 0
-  IO::File: 0
   JSON: 2.27
   OTRS::OPM::Maker: 0
   Path::Class: 0
   XML::LibXML: 0
   XML::LibXML::PrettyPrint: 0
-version: 1.03
+version: 1.02

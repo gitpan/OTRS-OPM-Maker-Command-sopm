@@ -2,6 +2,14 @@ LICENSE
 MANIFEST
 META.yml
 Makefile.PL
+OTRS-OPM-Maker-Command-sopm-1.02.tar.gz
+OTRS-OPM-Maker-Command-sopm-1.02/LICENSE
+OTRS-OPM-Maker-Command-sopm-1.02/MANIFEST
+OTRS-OPM-Maker-Command-sopm-1.02/META.yml
+OTRS-OPM-Maker-Command-sopm-1.02/Makefile.PL
+OTRS-OPM-Maker-Command-sopm-1.02/README
+OTRS-OPM-Maker-Command-sopm-1.02/dist.ini
+OTRS-OPM-Maker-Command-sopm-1.02/lib/OTRS/OPM/Maker/Command/sopm.pm
 README
 dist.ini
 lib/OTRS/OPM/Maker/Command/sopm.pm
