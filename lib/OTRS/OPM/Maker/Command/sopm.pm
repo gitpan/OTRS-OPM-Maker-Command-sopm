@@ -16,7 +16,7 @@ use XML::LibXML::PrettyPrint;
 
 use OTRS::OPM::Maker -command;
 
-our $VERSION = 1.08;
+our $VERSION = 1.10;
 
 sub abstract {
     return "build sopm file based on metadata";
@@ -106,10 +106,11 @@ sub execute {
     {
         my @files = File::Find::Rule->file->in( '.' );
 
-        # remove "hidden" files from list;
+        # remove "hidden" files from list; and do not list .sopm
         @files = grep{ 
             ( substr( $_, 0, 1 ) ne '.' ) &&
-            $_ !~ m{[\\/]\.} 
+            $_ !~ m{[\\/]\.} &&
+            $_ ne $json->{name} . '.sopm'
         }sort @files;
 
         push @xml_parts, 
@@ -202,7 +203,7 @@ sub execute {
     $json->{version},
     join( "\n", @xml_parts );
 
-    my $fh = IO::File->new( $name . '.sopm', 'w' );
+    my $fh = IO::File->new( $name . '.sopm', 'w' ) or die $!;
     $fh->print( $xml );
     $fh->close;
 }
@@ -350,8 +351,8 @@ sub _ColumnAdd {
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -360,7 +361,7 @@ OTRS::OPM::Maker::Command::sopm - Build .sopm file based on metadata
 
 =head1 VERSION
 
-version 1.08
+version 1.1
 
 =head1 CONFIGURATION
 
@@ -379,4 +380,3 @@ This is free software, licensed under:
   The Artistic License 2.0 (GPL Compatible)
 
 =cut
-
