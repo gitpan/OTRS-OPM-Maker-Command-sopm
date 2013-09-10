@@ -31,7 +31,7 @@ my %WriteMakefileArgs = (
     "XML::LibXML::PrettyPrint" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "1.1",
+  "VERSION" => "1.09",
   "test" => {
     "TESTS" => "t/*.t"
   }

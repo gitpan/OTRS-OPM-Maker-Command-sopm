@@ -16,7 +16,7 @@ use XML::LibXML::PrettyPrint;
 
 use OTRS::OPM::Maker -command;
 
-our $VERSION = 1.10;
+our $VERSION = 1.09;
 
 sub abstract {
     return "build sopm file based on metadata";
@@ -106,11 +106,10 @@ sub execute {
     {
         my @files = File::Find::Rule->file->in( '.' );
 
-        # remove "hidden" files from list; and do not list .sopm
+        # remove "hidden" files from list;
         @files = grep{ 
             ( substr( $_, 0, 1 ) ne '.' ) &&
-            $_ !~ m{[\\/]\.} &&
-            $_ ne $json->{name} . '.sopm'
+            $_ !~ m{[\\/]\.} 
         }sort @files;
 
         push @xml_parts, 
@@ -189,6 +188,10 @@ sub execute {
         $code->{type} = 'Code' . $code->{type};
         push @xml_parts, _CodeTemplate( $code->{type}, $code->{version}, $code->{function} || $code->{type} );
     }
+
+    for my $intro ( @{ $json->{intro} || [] } ) {
+        push @xml_parts, _IntroTemplate( $intro );
+    }
     
     my $xml = sprintf qq~<?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
@@ -203,9 +206,22 @@ sub execute {
     $json->{version},
     join( "\n", @xml_parts );
 
-    my $fh = IO::File->new( $name . '.sopm', 'w' ) or die $!;
+    my $fh = IO::File->new( $name . '.sopm', 'w' );
     $fh->print( $xml );
     $fh->close;
+}
+
+sub _IntroTemplate {
+    my ($intro) = @_;
+
+    my $version = $intro->{version} ? ' Version="' . $intro->{version} . '"' : '';
+    my $type    = $intro->{type};
+    my $text    = ref $intro->{text} ? join( "\n", @{ $intro->{text} } ) : $intro->{text};
+
+    return qq~    <Intro$type Type="post"$version><![CDATA[
+            $text
+        </Intro$type>
+    ~;
 }
 
 sub _CodeTemplate {
@@ -361,7 +377,7 @@ OTRS::OPM::Maker::Command::sopm - Build .sopm file based on metadata
 
 =head1 VERSION
 
-version 1.1
+version 1.09
 
 =head1 CONFIGURATION
 
