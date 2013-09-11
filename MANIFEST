@@ -2,6 +2,16 @@ LICENSE
 MANIFEST
 META.yml
 Makefile.PL
+OTRS-OPM-Maker-Command-sopm-1.15.tar.gz
+OTRS-OPM-Maker-Command-sopm-1.15/LICENSE
+OTRS-OPM-Maker-Command-sopm-1.15/MANIFEST
+OTRS-OPM-Maker-Command-sopm-1.15/META.yml
+OTRS-OPM-Maker-Command-sopm-1.15/Makefile.PL
+OTRS-OPM-Maker-Command-sopm-1.15/README
+OTRS-OPM-Maker-Command-sopm-1.15/dist.ini
+OTRS-OPM-Maker-Command-sopm-1.15/lib/OTRS/OPM/Maker/Command/sopm.pm
+OTRS-OPM-Maker-Command-sopm-1.15/t/01_simple_json.t
+OTRS-OPM-Maker-Command-sopm-1.15/t/Test.json
 README
 dist.ini
 lib/OTRS/OPM/Maker/Command/sopm.pm
