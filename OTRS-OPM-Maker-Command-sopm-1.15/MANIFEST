@@ -1,9 +1,0 @@
-LICENSE
-MANIFEST
-META.yml
-Makefile.PL
-README
-dist.ini
-lib/OTRS/OPM/Maker/Command/sopm.pm
-t/01_simple_json.t
-t/Test.json
