@@ -16,7 +16,7 @@ use XML::LibXML::PrettyPrint;
 
 use OTRS::OPM::Maker -command;
 
-our $VERSION = 1.17;
+our $VERSION = 1.18;
 
 sub abstract {
     return "build sopm file based on metadata";
@@ -79,13 +79,13 @@ sub execute {
     if ( $json->{requires} ) {
         {
             for my $name ( sort keys %{ $json->{requires}->{package} } ) {
-                push @xml_parts, sprintf '    <PackageRequired Version="%s">%s</PackageRequired>', $json->{requires}->{package}, $name;
+                push @xml_parts, sprintf '    <PackageRequired Version="%s">%s</PackageRequired>', $json->{requires}->{package}->{$name}, $name;
             }
         }
         
         {
             for my $name ( sort keys %{ $json->{requires}->{module} } ) {
-                push @xml_parts, sprintf '    <ModuleRequired Version="%s">%s</ModuleRequired>', $json->{requires}->{module}, $name;
+                push @xml_parts, sprintf '    <ModuleRequired Version="%s">%s</ModuleRequired>', $json->{requires}->{module}->{$name}, $name;
             }
         }
     }
@@ -418,7 +418,7 @@ OTRS::OPM::Maker::Command::sopm - Build .sopm file based on metadata
 
 =head1 VERSION
 
-version 1.17
+version 1.18
 
 =head1 CONFIGURATION
 
