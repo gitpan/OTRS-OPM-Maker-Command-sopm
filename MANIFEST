@@ -8,5 +8,7 @@ dist.ini
 lib/OTRS/OPM/Maker/Command/sopm.pm
 t/01_simple_json.t
 t/02_intro.t
+t/03_database.t
+t/Database.json
 t/Intro.json
 t/Test.json
