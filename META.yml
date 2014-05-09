@@ -20,6 +20,7 @@ requires:
   JSON: '2.27'
   OTRS::OPM::Maker: '0'
   Path::Class: '0'
+  Test::LongString: '0.15'
   XML::LibXML: '0'
   XML::LibXML::PrettyPrint: '0'
-version: '1.2'
+version: '1.21'

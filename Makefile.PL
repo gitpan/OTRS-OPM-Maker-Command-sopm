@@ -27,11 +27,12 @@ my %WriteMakefileArgs = (
     "JSON" => "2.27",
     "OTRS::OPM::Maker" => 0,
     "Path::Class" => 0,
+    "Test::LongString" => "0.15",
     "XML::LibXML" => 0,
     "XML::LibXML::PrettyPrint" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "1.2",
+  "VERSION" => "1.21",
   "test" => {
     "TESTS" => "t/*.t"
   }

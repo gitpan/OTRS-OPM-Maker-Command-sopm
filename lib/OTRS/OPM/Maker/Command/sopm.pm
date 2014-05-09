@@ -16,19 +16,20 @@ use XML::LibXML::PrettyPrint;
 
 use OTRS::OPM::Maker -command;
 
-our $VERSION = 1.20;
+our $VERSION = 1.21;
 
 sub abstract {
     return "build sopm file based on metadata";
 }
 
 sub usage_desc {
-    return "opmbuild sopm [--config <json_file>] <path_to_module>";
+    return "opmbuild sopm [--config <json_file>] [--cvs] <path_to_module>";
 }
 
 sub opt_spec {
     return (
         [ 'config=s', 'JSON file that provides all the metadata' ],
+        [ 'cvs'     , 'Add CVS tag to .sopm' ],
     );
 }
 
@@ -194,16 +195,22 @@ sub execute {
     for my $intro ( @{ $json->{intro} || [] } ) {
         push @xml_parts, _IntroTemplate( $intro );
     }
+
+    my $cvs = "";
+    if ( $opt->{cvs} ) {
+        $cvs = sprintf qq~\n    <CVS>\$Id: %s.sopm,v 1.1.1.1 2011/04/15 07:49:58 rb Exp \$</CVS>~, $name;
+    }
     
-    my $xml = sprintf qq~<?xml version="1.0" encoding="utf-8" ?>
+    my $xml = sprintf q~<?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
-    <CVS>\$Id: %s.sopm,v 1.1.1.1 2011/04/15 07:49:58 rb Exp \$</CVS>
+    <!-- GENERATED WITH OTRS::OPM::Maker::Command::sopm (%s) -->%s
     <Name>%s</Name>
     <Version>%s</Version>
 %s
 </otrs_package>
 ~, 
-    $name,
+    $VERSION,
+    $cvs,
     $name,
     $json->{version},
     join( "\n", @xml_parts );
@@ -420,7 +427,7 @@ OTRS::OPM::Maker::Command::sopm - Build .sopm file based on metadata
 
 =head1 VERSION
 
-version 1.2
+version 1.21
 
 =head1 CONFIGURATION
 

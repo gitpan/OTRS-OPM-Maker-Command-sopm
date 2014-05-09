@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Test::More;
+use Test::LongString;
 
 use File::Spec;
 use File::Basename;
@@ -14,14 +15,22 @@ my $dir  = File::Spec->rel2abs( dirname __FILE__ );
 my $json = File::Spec->catfile( $dir, 'Test.json' );
 my $sopm = File::Spec->catfile( $dir, 'Test.sopm' );
 
+my @files = <$dir/*.sopm>;
+unlink @files;
+
+my @files_check = <$dir/*.sopm>;
+ok !@files_check;
+
 OTRS::OPM::Maker::Command::sopm::execute( undef, { config => $json }, [ $dir ] );
 
 ok -e $sopm;
 
+my $version = $OTRS::OPM::Maker::Command::sopm::VERSION;
+
 my $content = do{ local (@ARGV, $/) = $sopm; <> };
-my $check   = q~<?xml version="1.0" encoding="utf-8" ?>
+my $check   = qq~<?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
-    <CVS>$Id: Test.sopm,v 1.1.1.1 2011/04/15 07:49:58 rb Exp $</CVS>
+    <!-- GENERATED WITH OTRS::OPM::Maker::Command::sopm ($version) -->
     <Name>Test</Name>
     <Version>0.0.3</Version>
     <Framework>3.0.x</Framework>
@@ -37,6 +46,7 @@ my $check   = q~<?xml version="1.0" encoding="utf-8" ?>
         <File Permission="644" Location="01_simple_json.t" />
         <File Permission="644" Location="02_intro.t" />
         <File Permission="644" Location="03_database.t" />
+        <File Permission="644" Location="04_cvs.t" />
         <File Permission="644" Location="Database.json" />
         <File Permission="644" Location="Intro.json" />
         <File Permission="644" Location="Test.json" />
@@ -77,10 +87,6 @@ my $check   = q~<?xml version="1.0" encoding="utf-8" ?>
 </otrs_package>
 ~;
 
-is $content, $check;
-
-unlink $sopm;
-ok !-e $sopm;
-
+is_string $content, $check;
 
 done_testing();
