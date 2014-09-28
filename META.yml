@@ -4,23 +4,23 @@ author:
   - 'Renee Baecker <module@renee-baecker.de>'
 build_requires: {}
 configure_requires:
-  ExtUtils::MakeMaker: '6.30'
+  ExtUtils::MakeMaker: 0
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300039, CPAN::Meta::Converter version 2.132830'
+generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060'
 license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: '1.4'
+  version: 1.4
 name: OTRS-OPM-Maker-Command-sopm
 requires:
-  File::Basename: '0'
-  File::Find::Rule: '0'
-  File::Spec: '0'
-  IO::File: '0'
-  JSON: '2.27'
-  OTRS::OPM::Maker: '0'
-  Path::Class: '0'
-  Test::LongString: '0.15'
-  XML::LibXML: '0'
-  XML::LibXML::PrettyPrint: '0'
-version: '1.21'
+  File::Basename: 0
+  File::Find::Rule: 0
+  File::Spec: 0
+  IO::File: 0
+  JSON: 2.27
+  OTRS::OPM::Maker: 0
+  Path::Class: 0
+  Test::LongString: 0.15
+  XML::LibXML: 0
+  XML::LibXML::PrettyPrint: 0
+version: 1.23
