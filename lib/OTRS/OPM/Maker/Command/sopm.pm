@@ -16,7 +16,7 @@ use XML::LibXML::PrettyPrint;
 
 use OTRS::OPM::Maker -command;
 
-our $VERSION = 1.23;
+our $VERSION = 1.24;
 
 sub abstract {
     return "build sopm file based on metadata";
@@ -299,11 +299,12 @@ sub _Insert {
 
     COLUMN:
     for my $column ( @{ $action->{columns} || [] } ) {
+        my $value = ref $column->{value} ? join( "\n", @{ $column->{value} } ) : $column->{value};
         $string .= sprintf '            <Data Key="%s"%s>%s</Data>' . "\n",
             $column->{name},
             ( $column->{type} ? 
-                (' Type="' . $column->{type} . '"', '<![CDATA[' . $column->{value} . ']]>' ) : 
-                ("", $column->{value})
+                (' Type="' . $column->{type} . '"', '<![CDATA[' . $value . ']]>' ) : 
+                ("", $value)
             );
     }
 
@@ -464,7 +465,7 @@ OTRS::OPM::Maker::Command::sopm - Build .sopm file based on metadata
 
 =head1 VERSION
 
-version 1.23
+version 1.24
 
 =head1 CONFIGURATION
 
