@@ -20,6 +20,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "artistic_2",
   "NAME" => "OTRS::OPM::Maker::Command::sopm",
   "PREREQ_PM" => {
+    "Carp" => 0,
     "File::Basename" => 0,
     "File::Find::Rule" => 0,
     "File::Spec" => 0,
@@ -27,11 +28,12 @@ my %WriteMakefileArgs = (
     "JSON" => "2.27",
     "OTRS::OPM::Maker" => 0,
     "Path::Class" => 0,
+    "Test::Exception" => "0.35",
     "Test::LongString" => "0.15",
     "XML::LibXML" => 0,
     "XML::LibXML::PrettyPrint" => 0
   },
-  "VERSION" => "1.24",
+  "VERSION" => "1.25",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -39,6 +41,7 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Carp" => 0,
   "File::Basename" => 0,
   "File::Find::Rule" => 0,
   "File::Spec" => 0,
@@ -46,6 +49,7 @@ my %FallbackPrereqs = (
   "JSON" => "2.27",
   "OTRS::OPM::Maker" => 0,
   "Path::Class" => 0,
+  "Test::Exception" => "0.35",
   "Test::LongString" => "0.15",
   "XML::LibXML" => 0,
   "XML::LibXML::PrettyPrint" => 0

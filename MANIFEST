@@ -12,6 +12,7 @@ t/02_intro.t
 t/03_database.t
 t/04_cvs.t
 t/05_foreign_key_create.t
+t/06_type_exception.t
 t/Database.json
 t/ForeignKeyCreate.json
 t/Intro.json
