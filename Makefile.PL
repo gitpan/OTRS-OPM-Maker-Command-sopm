@@ -11,7 +11,7 @@ use ExtUtils::MakeMaker ;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Build .sopm file based on metadata",
-  "AUTHOR" => "Renee Baecker <module\@renee-baecker.de>",
+  "AUTHOR" => "Renee Baecker <reneeb\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
@@ -20,6 +20,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "artistic_2",
   "NAME" => "OTRS::OPM::Maker::Command::sopm",
   "PREREQ_PM" => {
+    "Capture::Tiny" => "0.24",
     "Carp" => 0,
     "File::Basename" => 0,
     "File::Find::Rule" => 0,
@@ -33,14 +34,15 @@ my %WriteMakefileArgs = (
     "XML::LibXML" => 0,
     "XML::LibXML::PrettyPrint" => 0
   },
-  "VERSION" => "1.25",
+  "VERSION" => "1.26",
   "test" => {
-    "TESTS" => "t/*.t"
+    "TESTS" => "t/base/*.t t/otrs3/*.t t/otrs4/*.t t/warnings/*.t"
   }
 );
 
 
 my %FallbackPrereqs = (
+  "Capture::Tiny" => "0.24",
   "Carp" => 0,
   "File::Basename" => 0,
   "File::Find::Rule" => 0,
