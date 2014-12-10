@@ -62,7 +62,7 @@ OTRS::OPM::Maker::Utils::OTRS3
 
 =head1 VERSION
 
-version 1.26
+version 1.27
 
 =head1 AUTHOR
 

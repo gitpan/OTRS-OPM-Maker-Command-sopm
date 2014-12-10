@@ -20,6 +20,7 @@ requires:
   File::Spec: '0'
   IO::File: '0'
   JSON: '2.27'
+  List::Util: '1.33'
   OTRS::OPM::Maker: '0'
   Path::Class: '0'
   Test::Exception: '0.35'
@@ -30,4 +31,4 @@ resources:
   bugtracker: http://github.com/reneeb/OTRS-OPM-Maker-Command-sopm/issues
   homepage: http://github.com/reneeb/OTRS-OPM-Maker-Command-sopm
   repository: http://github.com/reneeb/OTRS-OPM-Maker-Command-sopm.git
-version: '1.26'
+version: '1.27'

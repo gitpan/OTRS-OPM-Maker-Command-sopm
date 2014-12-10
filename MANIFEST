@@ -19,6 +19,10 @@ t/base/Database.json
 t/base/ForeignKeyCreate.json
 t/base/Intro.json
 t/base/Test.json
+t/exclude/01/Test.lyx
+t/exclude/01/Test.txt
+t/exclude/01_packagesetup.t
+t/exclude/Packagesetup.json
 t/otrs3/01/Test.txt
 t/otrs3/01_packagesetup.t
 t/otrs3/Packagesetup.json

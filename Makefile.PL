@@ -27,6 +27,7 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "IO::File" => 0,
     "JSON" => "2.27",
+    "List::Util" => "1.33",
     "OTRS::OPM::Maker" => 0,
     "Path::Class" => 0,
     "Test::Exception" => "0.35",
@@ -34,9 +35,9 @@ my %WriteMakefileArgs = (
     "XML::LibXML" => 0,
     "XML::LibXML::PrettyPrint" => 0
   },
-  "VERSION" => "1.26",
+  "VERSION" => "1.27",
   "test" => {
-    "TESTS" => "t/base/*.t t/otrs3/*.t t/otrs4/*.t t/warnings/*.t"
+    "TESTS" => "t/base/*.t t/exclude/*.t t/otrs3/*.t t/otrs4/*.t t/warnings/*.t"
   }
 );
 
@@ -49,6 +50,7 @@ my %FallbackPrereqs = (
   "File::Spec" => 0,
   "IO::File" => 0,
   "JSON" => "2.27",
+  "List::Util" => "1.33",
   "OTRS::OPM::Maker" => 0,
   "Path::Class" => 0,
   "Test::Exception" => "0.35",
