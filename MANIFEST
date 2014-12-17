@@ -19,6 +19,9 @@ t/base/Database.json
 t/base/ForeignKeyCreate.json
 t/base/Intro.json
 t/base/Test.json
+t/changes/01/Test.txt
+t/changes/01_changelog.t
+t/changes/Changelog.json
 t/exclude/01/Test.lyx
 t/exclude/01/Test.txt
 t/exclude/01_packagesetup.t

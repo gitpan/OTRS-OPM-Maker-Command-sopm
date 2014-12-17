@@ -35,9 +35,9 @@ my %WriteMakefileArgs = (
     "XML::LibXML" => 0,
     "XML::LibXML::PrettyPrint" => 0
   },
-  "VERSION" => "1.27",
+  "VERSION" => "1.28",
   "test" => {
-    "TESTS" => "t/base/*.t t/exclude/*.t t/otrs3/*.t t/otrs4/*.t t/warnings/*.t"
+    "TESTS" => "t/base/*.t t/changes/*.t t/exclude/*.t t/otrs3/*.t t/otrs4/*.t t/warnings/*.t"
   }
 );
 

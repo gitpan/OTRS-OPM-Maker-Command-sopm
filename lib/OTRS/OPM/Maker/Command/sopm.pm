@@ -20,7 +20,7 @@ use OTRS::OPM::Maker -command;
 use OTRS::OPM::Maker::Utils::OTRS3;
 use OTRS::OPM::Maker::Utils::OTRS4;
 
-our $VERSION = 1.27;
+our $VERSION = 1.28;
 
 sub abstract {
     return "build sopm file based on metadata";
@@ -161,6 +161,29 @@ sub execute {
         push @xml_parts, 
             sprintf "    <Filelist>\n%s\n    </Filelist>",
                 join "\n", map{ my $permission = $_ =~ /^bin/ ? 755 : 644; qq~        <File Permission="$permission" Location="$_" />~ }@files;
+    }
+
+    # changelog
+    {
+        CHANGE:
+        for my $change ( @{ $json->{changes} || [] } ) {
+            my $version = '';
+            my $date    = '';
+            my $info    = '';
+
+            if ( !ref $change ) {
+                $info = $change;
+            }
+            elsif ( 'HASH' eq ref $change ) {
+                $info    = $change->{message};
+                $version = sprintf( ' Version="%s"', $change->{version} ) if $change->{version};
+                $date    = sprintf( ' Date="%s"', $change->{date} )       if $change->{date};
+            }
+
+            next CHANGE if !length $info;
+
+            push @xml_parts, sprintf "    <ChangeLog%s%s>%s</ChangeLog>", $version, $date, $info;
+        }
     }
 
     my %actions = (
@@ -486,7 +509,7 @@ OTRS::OPM::Maker::Command::sopm - Build .sopm file based on metadata
 
 =head1 VERSION
 
-version 1.27
+version 1.28
 
 =head1 DESCRIPTION
 
@@ -503,15 +526,15 @@ When an OTRS addon is installed, it happens in several phases
 
 =item 1 CodeInstall - type "pre"
 
-=item 1 DatabaseInstall - type "pre"
+=item 2 DatabaseInstall - type "pre"
 
-=item 1 Files are installed
+=item 3 Files are installed
 
-=item 1 Include SysConfig
+=item 4 Include SysConfig
 
-=item 1 DatabaseInstall - type "post"
+=item 5 DatabaseInstall - type "post"
 
-=item 1 CodeInstall - type "post"
+=item 6 CodeInstall - type "post"
 
 =back
 
